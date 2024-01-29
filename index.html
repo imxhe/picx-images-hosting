@@ -22,8 +22,8 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="https://img.022220.xyz" target="_blank">青空图库</a></h1>
-						<p>[ <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> ] </p>
+						<h1><a href="https://pic.locc.cc" target="_blank">青空图库</a></h1>
+						<p id="hitokoto">[<a href="#" id="hitokoto_text">:D 获取中...</a>]</p>
 					
 					</header>
 
@@ -53,5 +53,15 @@
 	};
 		var fresh_link=new Date().getTime();/
 	</script>
+	<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.querySelector('#hitokoto_text')
+      hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
+      hitokoto.innerText = data.hitokoto
+    })
+    .catch(console.error)
+</script>
 	</body>
 </html>
